@@ -1,7 +1,5 @@
 import os
-import sys
 
-import django
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
