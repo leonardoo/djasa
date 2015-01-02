@@ -4,8 +4,8 @@ import os
 from os import path
 from importlib import import_module
 
+import django
 from django.core.management.base import CommandError
-#from django.core.management.commands.startapp import Command as TemplateCommand
 from django.core.management.templates import TemplateCommand
 
 
@@ -17,7 +17,8 @@ class Command(TemplateCommand):
         self._validate_name(app_name, "app")    
         array = app_name.split(".")
         app_name = array[-1]
-        self.validate_name(app_name, "app")
+        if django.VERSION >= (1, 6, 0):
+            self.validate_name(app_name, "app")
         # Check that the app_name cannot be imported.
         try:
             import_module(app_name)
