@@ -29,10 +29,9 @@ class Command(TemplateCommand):
                                "name. Please try another name." % app_name)
         top_dir = os.getcwd()
         enum = enumerate(array)
-        last_index = list(enum)
-        for i,name in enum:
+        last_index = list(enum)[-1][0]
+        for i,name in enumerate(array):
             top_dir = path.join(top_dir, name)
-            
             try:
                 os.makedirs(top_dir)
             except OSError as e:
