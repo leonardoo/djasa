@@ -17,8 +17,10 @@ class Command(TemplateCommand):
         self._validate_name(app_name, "app")    
         array = app_name.split(".")
         app_name = array[-1]
+        #this method only exits in version >= django 1.6
         if django.VERSION >= (1, 6, 0):
             self.validate_name(app_name, "app")
+
         # Check that the app_name cannot be imported.
         try:
             import_module(app_name)
